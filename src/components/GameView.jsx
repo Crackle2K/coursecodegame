@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 
 const DIFF_COLORS = {
-  Easy:   'text-[#2e7d32] bg-[#c8e6c9] border-[#4CAF50]/50',
-  Medium: 'text-[#2e7d32] bg-[#c8e6c9] border-[#4CAF50]/50',
-  Hard:   'text-[#1b5e20] bg-[#a5d6a7] border-[#66BB6A]/50',
+  Easy:   'text-[#96E072] bg-[#96E072]/10 border-[#3DA35D]/30',
+  Medium: 'text-[#96E072] bg-[#96E072]/10 border-[#3DA35D]/30',
+  Hard:   'text-[#E8FCCF] bg-[#E8FCCF]/10 border-[#96E072]/30',
 }
 
 function useElapsedTimer() {
@@ -59,24 +59,24 @@ export default function GameView({
         <span className={`px-3 py-1 rounded-full border text-xs font-semibold ${DIFF_COLORS[difficulty]}`}>
           {difficulty}
         </span>
-        <span className="font-mono text-[#1a1a1a] text-base tabular-nums">{formatMs(elapsed)}</span>
-        <span className="text-[#666] text-xs font-medium">
-          {questionIndex + 1} <span className="text-[#999]">/</span> {totalQuestions}
+        <span className="font-mono text-[#96E072] text-base tabular-nums">{formatMs(elapsed)}</span>
+        <span className="text-[#3DA35D] text-xs font-medium">
+          {questionIndex + 1} <span className="text-[#3E8914]">/</span> {totalQuestions}
         </span>
       </div>
 
       {/* Progress bar */}
-      <div className="w-full max-w-lg h-1.5 bg-[#e8f5e0] rounded-full mb-10 overflow-hidden">
+      <div className="w-full max-w-lg h-1.5 bg-[#1a3d0f] rounded-full mb-10 overflow-hidden">
         <div
-          className="h-full bg-[#4CAF50] rounded-full transition-all duration-300"
+          className="h-full bg-[#96E072] rounded-full transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
 
       {/* Course name card */}
-      <div className="w-full max-w-lg bg-white border border-[#4CAF50] rounded-2xl p-8 mb-6 text-center fade-in shadow-md">
-        <p className="text-xs uppercase tracking-widest text-[#999] mb-4 font-semibold">Course Name</p>
-        <h2 className="text-2xl font-bold text-[#1a1a1a] leading-snug">{currentCourse?.name}</h2>
+      <div className="w-full max-w-lg bg-[#1a3d0f] border border-[#3E8914] rounded-2xl p-8 mb-6 text-center fade-in shadow-md">
+        <p className="text-xs uppercase tracking-widest text-[#3DA35D] mb-4 font-semibold">Course Name</p>
+        <h2 className="text-2xl font-bold text-[#e8fccf] leading-snug">{currentCourse?.name}</h2>
       </div>
 
       {/* Answer input */}
@@ -91,19 +91,19 @@ export default function GameView({
           maxLength={8}
           spellCheck={false}
           autoComplete="off"
-          className="w-full bg-white border-2 border-[#4CAF50] rounded-xl px-5 py-4 text-center text-2xl font-mono font-bold uppercase tracking-widest text-[#1a1a1a] placeholder-[#ccc] focus:outline-none focus:border-[#66BB6A] focus:ring-2 focus:ring-[#c8e6c9] transition"
+          className="w-full bg-[#1a3d0f] border-2 border-[#3E8914] rounded-xl px-5 py-4 text-center text-2xl font-mono font-bold uppercase tracking-widest text-[#e8fccf] placeholder-[#3E8914] focus:outline-none focus:border-[#3DA35D] focus:ring-2 focus:ring-[#3DA35D]/20 transition"
         />
       </div>
 
       {/* Submit button */}
       <button
         onClick={submitAnswer}
-        className="mt-4 w-full max-w-lg py-3 rounded-xl bg-[#4CAF50] hover:bg-[#66BB6A] text-white font-bold transition-colors duration-150 cursor-pointer"
+        className="mt-4 w-full max-w-lg py-3 rounded-xl bg-[#3DA35D] hover:bg-[#96E072] text-[#0a2608] font-bold transition-colors duration-150 cursor-pointer"
       >
         Submit
       </button>
 
-      <p className="mt-4 text-xs text-[#999]">Press Enter or click Submit · Case-insensitive</p>
+      <p className="mt-4 text-xs text-[#3DA35D]">Press Enter or click Submit · Case-insensitive</p>
     </div>
   )
 }
